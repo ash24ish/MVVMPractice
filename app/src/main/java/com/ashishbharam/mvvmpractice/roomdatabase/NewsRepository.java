@@ -28,6 +28,7 @@ public class NewsRepository {
     private static final String TAG = "mylog NewsRepository";
     private NewsRoomDatabase database;
     private LiveData<List<EntityNews>> getAllNewsList;
+    private List<EntityNews> serverToRoomList;
     private List<EntityNews> getNewsListServer;
     private RetrofitClient retrofitClient;
 
@@ -71,6 +72,11 @@ public class NewsRepository {
         new InsertAsyncTask(database).execute(newsList);
     }
 
+    public void insertFromServerToLocal(){
+        serverToRoomList = getNewsListServer;
+        new InsertFromServerToLocal(database).execute();
+    }
+
     public void insertOne(EntityNews news){
         new InsertSingleAsyncTask(database).execute(news);
     }
@@ -103,6 +109,19 @@ public class NewsRepository {
         @Override
         protected Void doInBackground(EntityNews... entityNews) {
             newsDao.insertOne(entityNews[0]);
+            return null;
+        }
+    }
+
+    private class InsertFromServerToLocal extends AsyncTask<Void,Void, Void>{
+        private NewsDao newsDao;
+        public InsertFromServerToLocal(NewsRoomDatabase database) {
+            newsDao = database.newsDao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            newsDao.insert(serverToRoomList);
             return null;
         }
     }

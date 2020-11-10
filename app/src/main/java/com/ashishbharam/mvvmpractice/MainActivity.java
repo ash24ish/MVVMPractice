@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
 
         initRecyclerView();
 
-        if (isNetworkConnected())
+        /*if (isNetworkConnected())
             getNewsFromServer();
-        else
+        else*/
             getsNewsFromLocalDb();
 
     }
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
                 entityNewsList = entityNews;
                 adapter.setAllNews(entityNews);
                 recyclerView.setAdapter(adapter);
-                newsViewModel.insert(entityNews);
-                newsViewModel.insertOne(new EntityNews("TestNews", "Ash", "10 nov 2020","Test lorem ipsum"));
+                //newsViewModel.insert(entityNews);
+                //newsViewModel.insertOne(new EntityNews("TestNews", "Ash", "10 nov 2020","Test lorem ipsum"));
 
                 Toast.makeText(MainActivity.this, "Working", Toast.LENGTH_LONG).show();
                 Log.d(TAG, "onChanged: Working ");
