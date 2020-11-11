@@ -76,37 +76,7 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
         });
     }
 
-    private void getNewsFromServer(){
-        newsViewModel.fetchFromServer().observe(this, entityNews -> {
 
-                recyclerView.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
-                materialTextView.setVisibility(View.GONE);
-
-                entityNewsList = entityNews;
-                adapter.setAllNews(entityNews);
-                recyclerView.setAdapter(adapter);
-                //newsViewModel.insert(entityNews);
-                //newsViewModel.insertOne(new EntityNews("TestNews", "Ash", "10 nov 2020","Test lorem ipsum"));
-
-                Toast.makeText(MainActivity.this, "Working", Toast.LENGTH_LONG).show();
-                Log.d(TAG, "onChanged: Working ");
-              //  Log.d(TAG, "onChanged: getNewsFromServer : "+entityNews.get(0).getNews_title());
-        });
-    }
-
-    private boolean isNetworkConnected() {
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert connMgr != null;
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show();
-            return true;
-        } else {
-            Toast.makeText(this, "Connection Lost", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
 
     @Override
     public void onNewsClick(int position) {
