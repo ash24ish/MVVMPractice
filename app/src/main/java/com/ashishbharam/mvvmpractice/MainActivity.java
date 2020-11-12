@@ -1,5 +1,6 @@
 package com.ashishbharam.mvvmpractice;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,7 +25,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNewsClickListener {
+public class MainActivity extends BaseActivity implements NewsRecycler.OnNewsClickListener {
 
     private static final String TAG = "mytag";
     private NewsViewModel newsViewModel;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
     private ContentLoadingProgressBar progressBar;
     private MaterialTextView materialTextView;
     private List<EntityNews> entityNewsList = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
         progressBar = findViewById(R.id.progressBar);
         materialTextView = findViewById(R.id.errorView);
 
-        NewsRepository newsRepository = new NewsRepository(getApplication());
+        //NewsRepository newsRepository = new NewsRepository(getApplication());
         newsViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
 
         initRecyclerView();
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNe
             progressBar.setVisibility(View.GONE);
             materialTextView.setVisibility(View.GONE);
 
+            //showLoader();
             entityNewsList = entityNews;
             adapter.setAllNews(entityNews);
             recyclerView.setAdapter(adapter);

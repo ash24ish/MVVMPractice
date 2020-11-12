@@ -31,7 +31,7 @@ public class NewsViewModel extends AndroidViewModel {
     public NewsViewModel(@NonNull Application application) {
         super(application);
         repository = new NewsRepository(application);
-        getAllNewsList = repository.getGetAllNewsList();
+       // getAllNewsList = repository.getGetAllNewsList();
     }
 
     // public LiveData<List<EntityNews>> getGetAllNewsList(){ return getAllNewsList; }
