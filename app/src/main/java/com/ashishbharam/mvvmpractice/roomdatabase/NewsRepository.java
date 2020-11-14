@@ -33,7 +33,7 @@ public class NewsRepository {
 
     public NewsRepository(Application application) {
         database = NewsRoomDatabase.getInstance(application);
-        //getAllNewsList = database.newsDao().getAllNewsFromRoom();
+        getAllNewsList = database.newsDao().getAllNewsFromRoom();
         retrofitClient = RetrofitClient.getInstance();
     }
 

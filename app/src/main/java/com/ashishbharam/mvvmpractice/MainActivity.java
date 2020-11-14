@@ -25,7 +25,7 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements NewsRecycler.OnNewsClickListener {
+public class MainActivity extends AppCompatActivity implements NewsRecycler.OnNewsClickListener {
 
     private static final String TAG = "mytag";
     private NewsViewModel newsViewModel;
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity implements NewsRecycler.OnNewsCli
                 newsViewModel.insert(entityNews);
                 newsViewModel.insertOne(new EntityNews("TestNews", "Ash", "10 nov 2020","Test lorem ipsum"));
 
-                Toast.makeText(MainActivity.this, "Working", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Working", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onChanged: Working ");
               //  Log.d(TAG, "onChanged: getNewsFromServer : "+entityNews.get(0).getNews_title());
         });

@@ -40,6 +40,8 @@ public class NewsViewModel extends AndroidViewModel {
         return repository.getNewsFromServer();
     }
     public LiveData<List<EntityNews>> fetchFromRoom(){
+       //repository.getNewsFromServer();
+        //repository.insertFromServerToLocal();
         return repository.getNewsFromRoom();
     }
     public void insert(List<EntityNews> entityNewsList) {
